@@ -7,6 +7,12 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 export default defineConfig({
+  // Outside a Lovable sandbox the nitro deploy plugin is skipped, so `vite build` emits
+  // an SSR bundle with no server entry to boot. Force-enable it only when NITRO_PRESET
+  // names a target — Railway sets node-server (see railway.json). With the variable
+  // unset this stays `undefined`, so the sandbox still builds for Cloudflare and every
+  // other builder keeps the exact behaviour it had before.
+  nitro: process.env.NITRO_PRESET ? { preset: process.env.NITRO_PRESET } : undefined,
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
