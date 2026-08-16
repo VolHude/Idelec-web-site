@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
+import { absoluteUrl } from "@/lib/site";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -27,9 +28,9 @@ export const Route = createFileRoute("/contact")({
       { name: "description", content: "Contactez IDELEC SARL : 03 88 86 88 14 - info@idelec-sarl.fr. Devis gratuit, intervention dans tout le Bas-Rhin." },
       { property: "og:title", content: "Contact - IDELEC" },
       { property: "og:description", content: "Demandez votre devis gratuit." },
-      { property: "og:url", content: "/contact" },
+      { property: "og:url", content: absoluteUrl("/contact") },
     ],
-    links: [{ rel: "canonical", href: "/contact" }],
+    links: [{ rel: "canonical", href: absoluteUrl("/contact") }],
   }),
   component: ContactPage,
 });

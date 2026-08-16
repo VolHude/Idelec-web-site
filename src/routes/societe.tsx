@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
+import { absoluteUrl } from "@/lib/site";
 import { LazyMap } from "@/components/LazyMap";
 import { Button } from "@/components/ui/button";
 import { Award, User, MapPin, Leaf, HardHat, HeartHandshake } from "lucide-react";
@@ -11,9 +12,9 @@ export const Route = createFileRoute("/societe")({
       { name: "description", content: "Découvrez IDELEC SARL : artisan, valeurs, savoir-faire et certification RGE QUALIPAC et IRVE. Intervention dans tout le Bas-Rhin." },
       { property: "og:title", content: "Notre société - IDELEC" },
       { property: "og:description", content: "Un artisan à votre service en Alsace, certifié RGE QUALIPAC et IRVE." },
-      { property: "og:url", content: "/societe" },
+      { property: "og:url", content: absoluteUrl("/societe") },
     ],
-    links: [{ rel: "canonical", href: "/societe" }],
+    links: [{ rel: "canonical", href: absoluteUrl("/societe") }],
   }),
   component: Page,
 });

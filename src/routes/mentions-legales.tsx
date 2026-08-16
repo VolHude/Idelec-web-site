@@ -1,14 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
+import { absoluteUrl } from "@/lib/site";
 
 export const Route = createFileRoute("/mentions-legales")({
   head: () => ({
     meta: [
       { title: "Mentions légales - IDELEC" },
       { name: "description", content: "Mentions légales du site IDELEC SARL." },
-      { property: "og:url", content: "/mentions-legales" },
+      { property: "og:url", content: absoluteUrl("/mentions-legales") },
     ],
-    links: [{ rel: "canonical", href: "/mentions-legales" }],
+    links: [{ rel: "canonical", href: absoluteUrl("/mentions-legales") }],
   }),
   component: MentionsLegales,
 });

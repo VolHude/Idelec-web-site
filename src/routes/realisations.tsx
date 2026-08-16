@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
+import { absoluteUrl } from "@/lib/site";
 import r1 from "@/assets/real-1.jpg";
 import r2 from "@/assets/real-2.jpg";
 import r4 from "@/assets/real-4.jpg";
@@ -14,9 +15,9 @@ export const Route = createFileRoute("/realisations")({
       { name: "description", content: "Galerie de nos installations électriques, pompes à chaleur, climatisations et sanitaires réalisées par IDELEC dans le Bas-Rhin." },
       { property: "og:title", content: "Réalisations - IDELEC" },
       { property: "og:description", content: "Découvrez nos chantiers récents." },
-      { property: "og:url", content: "/realisations" },
+      { property: "og:url", content: absoluteUrl("/realisations") },
     ],
-    links: [{ rel: "canonical", href: "/realisations" }],
+    links: [{ rel: "canonical", href: absoluteUrl("/realisations") }],
   }),
   component: Page,
 });

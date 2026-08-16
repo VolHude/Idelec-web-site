@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
+import { absoluteUrl } from "@/lib/site";
 import { RdvDialog } from "@/components/RdvDialog";
 import { Button } from "@/components/ui/button";
 import { Zap, PlugZap, Thermometer, Wind, Droplets, Check } from "lucide-react";
@@ -11,9 +12,9 @@ export const Route = createFileRoute("/services")({
       { name: "description", content: "Électricité, pompe à chaleur, climatisation et sanitaire : toutes les prestations IDELEC pour l'habitat individuel en Alsace." },
       { property: "og:title", content: "Nos services - IDELEC" },
       { property: "og:description", content: "L'expertise IDELEC pour vos installations techniques d'habitat." },
-      { property: "og:url", content: "/services" },
+      { property: "og:url", content: absoluteUrl("/services") },
     ],
-    links: [{ rel: "canonical", href: "/services" }],
+    links: [{ rel: "canonical", href: absoluteUrl("/services") }],
   }),
   component: ServicesPage,
 });
