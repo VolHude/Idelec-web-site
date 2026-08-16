@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { Zap, PlugZap, Thermometer, Wind, Droplets, ShieldCheck, BadgeCheck, Wrench, Leaf, ArrowRight, Phone, Check } from "lucide-react";
 import heroImg from "@/assets/hero-electrician.jpg";
 import { SiteLayout } from "@/components/SiteLayout";
+import { absoluteUrl } from "@/lib/site";
 import { RdvDialog } from "@/components/RdvDialog";
 import { Button } from "@/components/ui/button";
 
@@ -13,9 +14,9 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Artisan électricien en Alsace. Installation électrique, pompe à chaleur, climatisation et sanitaire. Devis gratuit." },
       { property: "og:title", content: "IDELEC - Électricien RGE QUALIPAC et IRVE en Alsace" },
       { property: "og:description", content: "Solutions techniques RGE QUALIPAC et IRVE pour l'habitat individuel dans le Bas-Rhin." },
-      { property: "og:url", content: "/" },
+      { property: "og:url", content: absoluteUrl("/") },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: absoluteUrl("/") }],
   }),
   component: Index,
 });

@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
+import { absoluteUrl } from "@/lib/site";
 
 function Section({ n, title, children }: { n: string; title: string; children: React.ReactNode }) {
   return (
@@ -15,9 +16,9 @@ export const Route = createFileRoute("/confidentialite")({
     meta: [
       { title: "Politique de confidentialité - IDELEC" },
       { name: "description", content: "Politique de confidentialité du site IDELEC SARL : données collectées, finalités, durée de conservation et vos droits RGPD." },
-      { property: "og:url", content: "/confidentialite" },
+      { property: "og:url", content: absoluteUrl("/confidentialite") },
     ],
-    links: [{ rel: "canonical", href: "/confidentialite" }],
+    links: [{ rel: "canonical", href: absoluteUrl("/confidentialite") }],
   }),
   component: Confidentialite,
 });

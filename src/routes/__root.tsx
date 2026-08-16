@@ -13,6 +13,43 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SiteLayout } from "@/components/SiteLayout";
 import { Button } from "@/components/ui/button";
+import { BUSINESS, SITE_URL, absoluteUrl } from "@/lib/site";
+
+// Données structurées schema.org : elles décrivent l'entreprise à Google dans un
+// format qu'il sait lire, ce qui compte pour les résultats de recherche locaux.
+// N'y figurent que des informations vérifiables (mentions légales, pages du site) —
+// pas d'horaires ni d'avis, qui seraient inventés.
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "Electrician",
+  "@id": `${SITE_URL}/#entreprise`,
+  name: BUSINESS.name,
+  legalName: BUSINESS.legalName,
+  url: SITE_URL,
+  logo: absoluteUrl("/favicon.png"),
+  telephone: BUSINESS.phone,
+  email: BUSINESS.email,
+  vatID: BUSINESS.vatID,
+  description:
+    "Artisan électricien certifié RGE QUALIPAC et IRVE à Schaffhouse-près-Seltz (67). Électricité, bornes de recharge, pompe à chaleur, climatisation et sanitaire.",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: BUSINESS.streetAddress,
+    postalCode: BUSINESS.postalCode,
+    addressLocality: BUSINESS.addressLocality,
+    addressRegion: BUSINESS.addressRegion,
+    addressCountry: BUSINESS.addressCountry,
+  },
+  areaServed: { "@type": "AdministrativeArea", name: "Bas-Rhin" },
+  knowsAbout: [
+    "Installation électrique",
+    "Mise aux normes électriques",
+    "Borne de recharge pour véhicule électrique",
+    "Pompe à chaleur",
+    "Climatisation",
+    "Sanitaire",
+  ],
+};
 
 function NotFoundComponent() {
   return (
@@ -105,9 +142,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="fr">
       <head>
         <HeadContent />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+        />
       </head>
       <body>
         {children}

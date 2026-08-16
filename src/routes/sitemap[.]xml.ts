@@ -1,7 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
+import { SITE_URL } from "@/lib/site";
 
-const BASE_URL = "";
+// Le protocole sitemap impose des URL absolues : ce champ était vide, donc le
+// fichier n'annonçait que des chemins ("/contact") et Google l'ignorait.
+const BASE_URL = SITE_URL;
 
 export const Route = createFileRoute("/sitemap.xml")({
   server: {
